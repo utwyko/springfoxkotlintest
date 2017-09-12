@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class TestController {
 
-    @GetMapping("/customer")
-    fun test() = Customer("ID", "NAME")
+    @GetMapping("/test")
+    fun test() = TestResponse()
 }
