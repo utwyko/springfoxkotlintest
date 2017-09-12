@@ -12,10 +12,9 @@ Then visit the Swagger UI, click the Test Controller and then the `GET /test` en
 Click the Model link to view the `TestResponse` model. You'll see that the `nonNullableString` field
 is marked as optional, even though the field is non-nullable in the response data class.
 
-It seems that adding either `@JsonProperty(required = true)` or `@ApiModelProperty(required = true)`
-does mark fields as required in the Swagger spec.
+Adding either `@JsonProperty(required = true)` or `@ApiModelProperty(required = true)` to a field does mark fields as required in the Swagger spec.
 
-(In a propject we can't publicly share only `@ApiModelProperty(required = true)` works, which is another mystery.)
+(In a project we can't publicly share only `@ApiModelProperty(required = true)` works, which is another mystery.)
 
 ## Links
 
