@@ -1,20 +1,20 @@
 # Springfox Kotlin Test
 
-Sample Spring Boot + SpringFox + Kotlin test.
+Sample Spring Boot + SpringFox + Kotlin + jackson-module-kotlin test.
 
-Inferring whether a response property is optional based on Kotlin nullability is not working.
+This project shows that using jackson-module-kotlin 2.9.x automatically marks non-nullable fields in Kotlin data classes as required in the Swagger spec (by automatically annotating those fields with `@JsonProperty(required = true)`).
 
-## Reproduce
+Run it:
 
     $ ./gradlew bootRun
 
+## How to check
+
 Then visit the Swagger UI, click the Test Controller and then the `GET /test` endpoint.
-Click the Model link to view the `TestResponse` model. You'll see that the `nonNullableString` field
-is marked as optional, even though the field is non-nullable in the response data class.
+Click the Model link to view the `TestResponse` model. You should see that the `nonNullableString` field
+is not marked as optional, because the field is non-nullable in the response data class.
 
-Adding either `@JsonProperty(required = true)` or `@ApiModelProperty(required = true)` to a field does mark fields as required in the Swagger spec.
-
-(In a project we can't publicly share only `@ApiModelProperty(required = true)` works, which is another mystery.)
+When jackson-module-kotlin is not present or older than 2.9.0 then non-nullable fields will not be marked as required. In that case you can add either `@JsonProperty(required = true)` or `@ApiModelProperty(required = true)` to the field to define it as required in the Swagger spec.
 
 ## Links
 
